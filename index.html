@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover the best AI tools organized by category">
+    <title>AI Tool Kit - Discover AI Tools for Every Task</title>
+    
+    <!-- Preload fonts for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Your Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="bg-animated"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">AI TOOLKIT</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in">AI Tool Kit</h1>
+            <p>Discover the right AI tools for every task</p>
+            <div class="hero-buttons">
+                <button class="cta-button">
+                    <span>Explore Tools</span>
+                    <span>→</span>
+                </button>
+                <button class="search-btn">
+                    <span>🔍</span>
+                    <span>Search Tools</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="section">
+        <h2 class="section-title slide-up">AI Categories</h2>
+        
+        <div class="category-grid">
+            
+            <!-- Category 1: Image Generation -->
+            <div class="category-card slide-up">
+                <span class="category-icon">🎨</span>
+                <h3>Image Generation</h3>
+                <p>Create stunning visuals with AI-powered image generators</p>
+                <span class="tool-count">20 Tools</span>
+            </div>
+
+            <!-- Category 2: Video Editing -->
+            <div class="category-card slide-up">
+                <span class="category-icon">🎬</span>
+                <h3>Video Editing</h3>
+                <p>AI-powered video creation and editing tools</p>
+                <span class="tool-count">11 Tools</span>
+            </div>
+
+            <!-- Category 3: Code Assistant -->
+            <div class="category-card slide-up">
+                <span class="category-icon">💻</span>
+                <h3>Code Assistant</h3>
+                <p>AI coding companions for developers</p>
+                <span class="tool-count">12 Tools</span>
+            </div>
+
+            <!-- Category 4: Excel & Data -->
+            <div class="category-card slide-up">
+                <span class="category-icon">📊</span>
+                <h3>Excel & Data</h3>
+                <p>Smart data analysis and automation tools</p>
+                <span class="tool-count">8 Tools</span>
+            </div>
+
+            <!-- Category 5: Chatbots -->
+            <div class="category-card slide-up">
+                <span class="category-icon">💬</span>
+                <h3>Chatbots</h3>
+                <p>Conversational AI assistants and chatbots</p>
+                <span class="tool-count">11 Tools</span>
+            </div>
+
+            <!-- Category 6: Music & Audio -->
+            <div class="category-card slide-up">
+                <span class="category-icon">🎵</span>
+                <h3>Music & Audio</h3>
+                <p>AI music generation and audio processing</p>
+                <span class="tool-count">8 Tools</span>
+            </div>
+
+            <!-- Category 7: Writing -->
+            <div class="category-card slide-up">
+                <span class="category-icon">✍️</span>
+                <h3>Writing</h3>
+                <p>AI writing assistants and content generators</p>
+                <span class="tool-count">11 Tools</span>
+            </div>
+
+            <!-- Category 8: Research -->
+            <div class="category-card slide-up">
+                <span class="category-icon">🔬</span>
+                <h3>Research</h3>
+                <p>AI-powered research and analysis tools</p>
+                <span class="tool-count">8 Tools</span>
+            </div>
+
+            <!-- Category 9: Design -->
+            <div class="category-card slide-up">
+                <span class="category-icon">🎯</span>
+                <h3>Design</h3>
+                <p>AI design tools for graphics and UI/UX</p>
+                <span class="tool-count">9 Tools</span>
+            </div>
+
+            <!-- Category 10: Vibe Coding -->
+            <div class="category-card slide-up">
+                <span class="category-icon">✨</span>
+                <h3>Vibe Coding</h3>
+                <p>AI agents and orchestration for agentic workflows</p>
+                <span class="tool-count">12 Tools</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title slide-up">About AI Tool Kit</h2>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center; color: rgba(255, 255, 255, 0.7); line-height: 1.8;">
+            <p style="margin-bottom: 1.5rem;">
+                AI Tool Kit is your comprehensive directory of the best AI tools across all categories. 
+                We curate and organize the latest AI-powered applications to help you discover the 
+                perfect tool for your needs.
+            </p>
+            <p>
+                Whether you're a developer, designer, writer, or business professional, 
+                find cutting-edge AI solutions that will transform your workflow.
+            </p>
+        </div>
+    </section>
+
+    <!-- Search Modal -->
+    <div class="search-overlay">
+        <div class="search-modal">
+            <button class="close-search">&times;</button>
+            <div class="search-modal-header">
+                <input type="text" class="search-input" placeholder="Search AI tools by name, category, or feature...">
+            </div>
+            <div class="search-results"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Built with ❤️ and AI • 2026 • AI Tool Kit</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+            <a href="#" style="color: #00ffff; text-decoration: none; margin: 0 1rem;">Privacy</a>
+            <a href="#" style="color: #00ffff; text-decoration: none; margin: 0 1rem;">Terms</a>
+            <a href="#" style="color: #00ffff; text-decoration: none; margin: 0 1rem;">Contact</a>
+        </p>
+    </footer>
+
+    <!-- Your Custom JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
