@@ -11,27 +11,27 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 192 192%27%3E%3Crect fill=%27%230d0d0d%27 width=%27192%27 height=%27192%27/%3E%3Crect fill=%27%2300ffff%27 x=%2720%27 y=%2720%27 width=%27152%27 height=%27152%27 rx=%2725%27/%3E%3Ctext x=%2796%27 y=%27115%27 font-size=%2780%27 fill=%27%230d0d0d%27 text-anchor=%27middle%27 font-weight=%27bold%27 dominant-baseline=%27middle%27%3EAI%3C/text%3E%3C/svg%3E",
+      "src": "/icon-192.png",
       "sizes": "192x192",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 192 192%27%3E%3Crect fill=%27%230d0d0d%27 width=%27192%27 height=%27192%27/%3E%3Crect fill=%27%2300ffff%27 x=%2720%27 y=%2720%27 width=%27152%27 height=%27152%27 rx=%2725%27/%3E%3Ctext x=%2796%27 y=%27115%27 font-size=%2780%27 fill=%27%230d0d0d%27 text-anchor=%27middle%27 font-weight=%27bold%27 dominant-baseline=%27middle%27%3EAI%3C/text%3E%3C/svg%3E",
+      "src": "/icon-192.png",
       "sizes": "192x192",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 512 512%27%3E%3Crect fill=%27%230d0d0d%27 width=%27512%27 height=%27512%27/%3E%3Crect fill=%27%2300ffff%27 x=%2750%27 y=%2750%27 width=%27412%27 height=%27412%27 rx=%2765%27/%3E%3Ctext x=%27256%27 y=%27300%27 font-size=%27200%27 fill=%27%230d0d0d%27 text-anchor=%27middle%27 font-weight=%27bold%27 dominant-baseline=%27middle%27%3EAI%3C/text%3E%3C/svg%3E",
+      "src": "/icon-512.png",
       "sizes": "512x512",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 512 512%27%3E%3Crect fill=%27%230d0d0d%27 width=%27512%27 height=%27512%27/%3E%3Crect fill=%27%2300ffff%27 x=%2750%27 y=%2750%27 width=%27412%27 height=%27412%27 rx=%2765%27/%3E%3Ctext x=%27256%27 y=%27300%27 font-size=%27200%27 fill=%27%230d0d0d%27 text-anchor=%27middle%27 font-weight=%27bold%27 dominant-baseline=%27middle%27%3EAI%3C/text%3E%3C/svg%3E",
+      "src": "/icon-512.png",
       "sizes": "512x512",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "maskable"
     }
   ],
