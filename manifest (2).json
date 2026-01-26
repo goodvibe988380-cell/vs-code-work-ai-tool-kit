@@ -1,0 +1,12 @@
+{
+  "background_color": "#ffffff",
+  "description": "Discover the best AI tools organized by category",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "santhosh-ai-project.netlify",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "santhosh-ai-project.netlify",
+  "start_url": "/",
+  "theme_color": "#ffffff"
+}
