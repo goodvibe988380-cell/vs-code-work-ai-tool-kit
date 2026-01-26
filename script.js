@@ -258,6 +258,13 @@ function getToolsForCategory(category) {
             { name: 'Anima', description: 'Design-aware AI for modern product teams with vibe coding', link: 'https://www.animaapp.com' },
             { name: 'Logfire', description: 'AI observability platform for LLM and agent systems', link: 'https://logfire.pydantic.dev' },
             { name: 'Judge0', description: 'Sandboxed code execution system for AI agents', link: 'https://judge0.com' }
+        ],
+        'App Build': [
+            { name: 'PWA Builder', description: 'Build Progressive Web Apps with ease using Microsoft\'s PWA Builder platform', link: 'https://www.pwabuilder.com/' },
+            { name: 'Android Studio', description: 'Official IDE for Android app development with powerful tools and emulator', link: 'https://developer.android.com/studio' },
+            { name: 'MIT App Inventor', description: 'Visual block-based programming for beginners to create Android apps', link: 'https://appinventor.mit.edu/' },
+            { name: 'Firebase', description: 'Backend platform for building web and mobile apps with real-time database', link: 'https://firebase.google.com/' },
+            { name: 'React Native', description: 'Build native mobile apps using React and JavaScript for iOS and Android', link: 'https://reactnative.dev/' }
         ]
     };
     
@@ -562,6 +569,13 @@ function getAllTools() {
             { name: 'Anima', description: 'Design-aware AI for modern product teams with vibe coding', link: 'https://www.animaapp.com' },
             { name: 'Logfire', description: 'AI observability platform for LLM and agent systems', link: 'https://logfire.pydantic.dev' },
             { name: 'Judge0', description: 'Sandboxed code execution system for AI agents', link: 'https://judge0.com' }
+        ],
+        'App Build': [
+            { name: 'PWA Builder', description: 'Build Progressive Web Apps with ease using Microsoft\'s PWA Builder platform', link: 'https://www.pwabuilder.com/' },
+            { name: 'Android Studio', description: 'Official IDE for Android app development with powerful tools and emulator', link: 'https://developer.android.com/studio' },
+            { name: 'MIT App Inventor', description: 'Visual block-based programming for beginners to create Android apps', link: 'https://appinventor.mit.edu/' },
+            { name: 'Firebase', description: 'Backend platform for building web and mobile apps with real-time database', link: 'https://firebase.google.com/' },
+            { name: 'React Native', description: 'Build native mobile apps using React and JavaScript for iOS and Android', link: 'https://reactnative.dev/' }
         ]
     };
     
