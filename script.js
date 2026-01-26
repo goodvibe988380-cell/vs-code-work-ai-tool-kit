@@ -6,14 +6,37 @@
 // ========== SERVICE WORKER REGISTRATION ==========
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
+        navigator.serviceWorker.register('/sw.js', { scope: '/' })
             .then(registration => {
-                console.log('Service Worker registered successfully:', registration);
+                console.log('✅ Service Worker registered successfully');
+                console.log('Registration scope:', registration.scope);
+                
+                // Check for updates
+                registration.addEventListener('updatefound', () => {
+                    const newWorker = registration.installing;
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'activated') {
+                            console.log('✅ New Service Worker activated');
+                        }
+                    });
+                });
+                
+                // Check for updates periodically
+                setInterval(() => {
+                    registration.update();
+                }, 60000);
             })
             .catch(error => {
-                console.error('Service Worker registration failed:', error);
+                console.error('❌ Service Worker registration failed:', error.message);
+                if (error.toString().includes('Only secure origins')) {
+                    console.error('⚠️ Service Workers require HTTPS or localhost');
+                    console.error('Make sure you\'re running: node server.js');
+                    console.error('Then visit: http://localhost:8000');
+                }
             });
     });
+} else {
+    console.warn('⚠️ Service Workers not supported');
 }
 
 // ========== WAIT FOR DOM TO LOAD ==========
