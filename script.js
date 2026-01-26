@@ -3,6 +3,19 @@
 // Advanced Interactions & Animations
 // ================================
 
+// ========== SERVICE WORKER REGISTRATION ==========
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+                console.log('Service Worker registered successfully:', registration);
+            })
+            .catch(error => {
+                console.error('Service Worker registration failed:', error);
+            });
+    });
+}
+
 // ========== WAIT FOR DOM TO LOAD ==========
 document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
