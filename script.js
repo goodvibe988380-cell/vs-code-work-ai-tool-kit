@@ -15,7 +15,6 @@ function initializeApp() {
     setupCategoryCards();
     setupSearchFunctionality();
     createParticles();
-    setupCursorEffect();
     setupTypingEffect();
 }
 
@@ -376,39 +375,6 @@ function createParticles() {
         }
     `;
     document.head.appendChild(particleStyle);
-}
-
-// ========== CUSTOM CURSOR EFFECT ==========
-function setupCursorEffect() {
-    const cursor = document.createElement('div');
-    cursor.className = 'custom-cursor';
-    cursor.style.cssText = `
-        position: fixed;
-        width: 20px;
-        height: 20px;
-        border: 2px solid #00ffff;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 10000;
-        transition: transform 0.2s ease;
-        mix-blend-mode: difference;
-    `;
-    document.body.appendChild(cursor);
-    
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX - 10 + 'px';
-        cursor.style.top = e.clientY - 10 + 'px';
-    });
-    
-    // Enlarge on hover over interactive elements
-    document.querySelectorAll('a, button, .category-card').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursor.style.transform = 'scale(2)';
-        });
-        el.addEventListener('mouseleave', () => {
-            cursor.style.transform = 'scale(1)';
-        });
-    });
 }
 
 // ========== SEARCH FUNCTIONALITY ==========
