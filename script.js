@@ -265,6 +265,20 @@ function getToolsForCategory(category) {
             { name: 'MIT App Inventor', description: 'Visual block-based programming for beginners to create Android apps', link: 'https://appinventor.mit.edu/' },
             { name: 'Firebase', description: 'Backend platform for building web and mobile apps with real-time database', link: 'https://firebase.google.com/' },
             { name: 'React Native', description: 'Build native mobile apps using React and JavaScript for iOS and Android', link: 'https://reactnative.dev/' }
+        ],
+        'Google Tools': [
+            { name: 'Gemini', description: 'Google\'s advanced AI model for text, images, and multimodal tasks', link: 'https://gemini.google.com' },
+            { name: 'Bard', description: 'Google\'s conversational AI assistant powered by Gemini', link: 'https://bard.google.com' },
+            { name: 'Google Vertex AI', description: 'Fully managed AI platform for building and deploying ML models', link: 'https://cloud.google.com/vertex-ai' },
+            { name: 'Google Cloud AI', description: 'Comprehensive AI and ML services in Google Cloud', link: 'https://cloud.google.com/solutions/ai' },
+            { name: 'Google Colab', description: 'Free Jupyter notebook environment for data analysis and machine learning', link: 'https://colab.google.com' },
+            { name: 'Google Cloud Vision', description: 'AI-powered image analysis and understanding', link: 'https://cloud.google.com/vision' },
+            { name: 'Google Cloud NLP', description: 'Natural language processing and text analysis API', link: 'https://cloud.google.com/natural-language' },
+            { name: 'Google Cloud Speech-to-Text', description: 'Convert audio to text using AI', link: 'https://cloud.google.com/speech-to-text' },
+            { name: 'Google Cloud Text-to-Speech', description: 'Convert text to natural-sounding audio', link: 'https://cloud.google.com/text-to-speech' },
+            { name: 'Google Cloud Translation', description: 'AI-powered language translation service', link: 'https://cloud.google.com/translate' },
+            { name: 'Firebase ML Kit', description: 'Machine learning SDK for mobile apps', link: 'https://firebase.google.com/docs/ml' },
+            { name: 'Google Cloud Document AI', description: 'AI for document processing and data extraction', link: 'https://cloud.google.com/document-ai' }
         ]
     };
     
@@ -576,6 +590,20 @@ function getAllTools() {
             { name: 'MIT App Inventor', description: 'Visual block-based programming for beginners to create Android apps', link: 'https://appinventor.mit.edu/' },
             { name: 'Firebase', description: 'Backend platform for building web and mobile apps with real-time database', link: 'https://firebase.google.com/' },
             { name: 'React Native', description: 'Build native mobile apps using React and JavaScript for iOS and Android', link: 'https://reactnative.dev/' }
+        ],
+        'Google Tools': [
+            { name: 'Gemini', description: 'Google\'s advanced AI model for text, images, and multimodal tasks', link: 'https://gemini.google.com' },
+            { name: 'Bard', description: 'Google\'s conversational AI assistant powered by Gemini', link: 'https://bard.google.com' },
+            { name: 'Google Vertex AI', description: 'Fully managed AI platform for building and deploying ML models', link: 'https://cloud.google.com/vertex-ai' },
+            { name: 'Google Cloud AI', description: 'Comprehensive AI and ML services in Google Cloud', link: 'https://cloud.google.com/solutions/ai' },
+            { name: 'Google Colab', description: 'Free Jupyter notebook environment for data analysis and machine learning', link: 'https://colab.google.com' },
+            { name: 'Google Cloud Vision', description: 'AI-powered image analysis and understanding', link: 'https://cloud.google.com/vision' },
+            { name: 'Google Cloud NLP', description: 'Natural language processing and text analysis API', link: 'https://cloud.google.com/natural-language' },
+            { name: 'Google Cloud Speech-to-Text', description: 'Convert audio to text using AI', link: 'https://cloud.google.com/speech-to-text' },
+            { name: 'Google Cloud Text-to-Speech', description: 'Convert text to natural-sounding audio', link: 'https://cloud.google.com/text-to-speech' },
+            { name: 'Google Cloud Translation', description: 'AI-powered language translation service', link: 'https://cloud.google.com/translate' },
+            { name: 'Firebase ML Kit', description: 'Machine learning SDK for mobile apps', link: 'https://firebase.google.com/docs/ml' },
+            { name: 'Google Cloud Document AI', description: 'AI for document processing and data extraction', link: 'https://cloud.google.com/document-ai' }
         ]
     };
     
