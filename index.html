@@ -55,6 +55,28 @@
         </div>
     </section>
 
+    <!-- ADDITION: AI Tools Search Container -->
+    <section id="ai-search-container" class="ai-search-wrapper" aria-label="AI tools quick search">
+        <div class="ai-search-inner">
+            <p class="ai-search-title">Find AI tools instantly</p>
+            <div class="ai-search-form" role="search">
+                <label class="ai-search-input-shell" for="ai-tool-search-input">
+                    <span class="ai-search-icon" aria-hidden="true">&#128269;</span>
+                    <input
+                        id="ai-tool-search-input"
+                        type="text"
+                        class="ai-search-input-field"
+                        placeholder="Search 1000+ AI tools"
+                        autocomplete="off"
+                        spellcheck="false"
+                    >
+                </label>
+                <ul id="ai-search-suggestions" class="ai-search-suggestions" role="listbox" hidden></ul>
+            </div>
+            <p id="ai-search-status" class="ai-search-status" aria-live="polite"></p>
+        </div>
+    </section>
+
     <!-- Categories Section -->
     <section id="categories" class="section">
         <h2 class="section-title slide-up">AI Categories</h2>
@@ -223,6 +245,8 @@
 
     <!-- Your Custom JavaScript -->
     <script src="script.js"></script>
+    <!-- ADDITION: AI Tools Search Script -->
+    <script src="search.js"></script>
 
 </body>
 </html>
