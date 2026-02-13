@@ -49,6 +49,7 @@ function initializeApp() {
     setupNavigation();
     setupScrollAnimations();
     setupCategoryCards();
+    updateCategoryCounts();
     setupSearchFunctionality();
     createParticles();
     setupTypingEffect();
@@ -139,8 +140,13 @@ function toggleCategoryTools(card) {
 
 // ========== CREATE TOOLS DYNAMICALLY ==========
 function createToolsForCategory(card) {
-    const categoryName = card.querySelector('h3').textContent;
-    const toolsData = getToolsForCategory(categoryName);
+    const selectedCategory = card.querySelector('h3').textContent;
+    const tools = getAllTools();
+
+    // FIXED CATEGORY FILTER LOGIC
+    const toolsData = tools.filter(tool =>
+        normalizeCategory(tool.category) === normalizeCategory(selectedCategory)
+    );
     
     const toolsContainer = document.createElement('div');
     toolsContainer.className = 'tools-container expanded';
@@ -168,6 +174,32 @@ function createToolsForCategory(card) {
             tool.style.transition = 'opacity 0.2s ease';
         });
     }, 10);
+}
+
+// HELPER FUNCTION
+function normalizeCategory(category) {
+    return String(category || '').trim().toLowerCase();
+}
+
+// FIXED CATEGORY COUNT LOGIC
+function updateCategoryCounts() {
+    const categoryCards = document.querySelectorAll('.category-card');
+    const tools = getAllTools();
+
+    console.log([...new Set(tools.map(t => t.category))]);
+
+    categoryCards.forEach((card) => {
+        const selectedCategory = card.querySelector('h3').textContent;
+        const countElement = card.querySelector('.tool-count');
+
+        if (!countElement) return;
+
+        const count = tools.filter(tool =>
+            normalizeCategory(tool.category) === normalizeCategory(selectedCategory)
+        ).length;
+
+        countElement.textContent = `${count} Tools`;
+    });
 }
 
 // ========== LATEST POPULAR TOOLS (2024-2026) ==========
