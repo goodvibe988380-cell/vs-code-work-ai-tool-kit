@@ -170,6 +170,93 @@ function createToolsForCategory(card) {
     }, 10);
 }
 
+// ========== LATEST POPULAR TOOLS (2024-2026) ==========
+const latestPopularTools = [
+    { name: 'Kimi K2', category: 'Chatbots', description: 'Long-context multilingual assistant model by Moonshot AI.', link: 'https://github.com/MoonshotAI/Kimi-K2' },
+    { name: 'OpenRouter', category: 'App Build', description: 'Unified API router for accessing multiple frontier and open LLMs.', link: 'https://openrouter.ai' },
+    { name: 'Perplexity', category: 'Research', description: 'AI answer engine with web grounding and citations.', link: 'https://www.perplexity.ai' },
+    { name: 'Runway', category: 'Video Editing', description: 'Generative video suite for creation, editing, and production workflows.', link: 'https://runwayml.com' },
+    { name: 'Pika', category: 'Video Editing', description: 'Fast AI video generation and edit control platform.', link: 'https://pika.art' },
+    { name: 'Claude 3', category: 'Chatbots', description: 'Anthropic model family for reasoning, coding, and enterprise assistants.', link: 'https://www.anthropic.com/claude' },
+    { name: 'Gemini Advanced', category: 'Google Tools', description: 'Premium Gemini experience with advanced model capabilities.', link: 'https://gemini.google.com/advanced' },
+    { name: 'Grok', category: 'Chatbots', description: 'xAI conversational assistant with real-time web awareness.', link: 'https://x.ai/grok' },
+    { name: 'Replit AI', category: 'Code Assistant', description: 'Cloud coding assistant for generation, debugging, and deployment.', link: 'https://replit.com/ai' },
+    { name: 'Cursor', category: 'Code Assistant', description: 'AI-native code editor for large-codebase workflows.', link: 'https://www.cursor.com' },
+    { name: 'Midjourney', category: 'Image Generation', description: 'High-fidelity text-to-image platform for creators.', link: 'https://www.midjourney.com' },
+    { name: 'Suno', category: 'Music & Audio', description: 'Generate complete songs with vocals and arrangement from prompts.', link: 'https://suno.ai' },
+    { name: 'ElevenLabs', category: 'Music & Audio', description: 'High-quality voice synthesis, dubbing, and voice cloning platform.', link: 'https://elevenlabs.io' },
+    { name: 'Devin AI', category: 'Vibe Coding', description: 'Autonomous software engineering agent for multi-step coding tasks.', link: 'https://www.cognition.ai' },
+    { name: 'Hugging Face', category: 'App Build', description: 'Open AI platform for models, datasets, inference APIs, and tooling.', link: 'https://huggingface.co' },
+    { name: 'Replicate', category: 'App Build', description: 'Run and deploy machine learning models through simple APIs.', link: 'https://replicate.com' },
+    { name: 'Stability AI', category: 'Image Generation', description: 'Provider of generative image and multimodal models and tooling.', link: 'https://stability.ai' },
+    { name: 'Leonardo AI', category: 'Image Generation', description: 'AI image creation platform for assets and creative workflows.', link: 'https://leonardo.ai' },
+    { name: 'Anthropic', category: 'App Build', description: 'Claude API platform focused on reliable and safe enterprise AI.', link: 'https://www.anthropic.com' },
+    { name: 'Together AI', category: 'App Build', description: 'Inference and fine-tuning platform for open foundation models.', link: 'https://www.together.ai' },
+    { name: 'Mistral', category: 'Chatbots', description: 'Frontier and open-weight model provider for assistant use cases.', link: 'https://mistral.ai' },
+    { name: 'Cohere', category: 'App Build', description: 'Enterprise AI platform for chat, retrieval, and automation.', link: 'https://cohere.com' },
+    { name: 'You.com', category: 'Research', description: 'AI-first search assistant combining retrieval and conversation.', link: 'https://you.com' },
+    { name: 'Phind', category: 'Research', description: 'Developer-focused AI search engine for technical answers.', link: 'https://www.phind.com' },
+    { name: 'Exa', category: 'Research', description: 'Semantic search API designed for AI agents and apps.', link: 'https://exa.ai' },
+    { name: 'Genspark', category: 'Research', description: 'AI search product focused on synthesized answer experiences.', link: 'https://www.genspark.ai' },
+    { name: 'Windsurf', category: 'Code Assistant', description: 'AI coding environment for multi-file refactors and edits.', link: 'https://windsurf.com' },
+    { name: 'Sourcegraph Cody', category: 'Code Assistant', description: 'Context-aware coding assistant for large repositories.', link: 'https://sourcegraph.com/cody' },
+    { name: 'Augment Code', category: 'Code Assistant', description: 'AI coding assistant optimized for team codebases.', link: 'https://www.augmentcode.com' },
+    { name: 'Continue.dev', category: 'Code Assistant', description: 'Open-source coding assistant framework for popular IDEs.', link: 'https://www.continue.dev' },
+    { name: 'Ideogram', category: 'Image Generation', description: 'Text-to-image model known for strong prompt and text rendering.', link: 'https://ideogram.ai' },
+    { name: 'FLUX.1', category: 'Image Generation', description: 'State-of-the-art image model line by Black Forest Labs.', link: 'https://blackforestlabs.ai' },
+    { name: 'OpenAI Sora', category: 'Video Editing', description: 'Text-to-video generation system for cinematic outputs.', link: 'https://openai.com/sora' },
+    { name: 'Luma Dream Machine', category: 'Video Editing', description: 'AI video generation platform for realistic motion and scenes.', link: 'https://lumalabs.ai/dream-machine' },
+    { name: 'Kling AI', category: 'Video Editing', description: 'Video generation platform focused on longer and realistic clips.', link: 'https://klingai.com' },
+    { name: 'Udio', category: 'Music & Audio', description: 'Text-to-music platform for end-to-end song generation.', link: 'https://www.udio.com' },
+    { name: 'Notion AI', category: 'Writing', description: 'Workspace assistant for drafting, summarizing, and planning.', link: 'https://www.notion.so/product/ai' },
+    { name: 'ClickUp Brain', category: 'Writing', description: 'Productivity assistant for task summaries and workflow content.', link: 'https://clickup.com/ai' },
+    { name: 'Manus AI', category: 'Vibe Coding', description: 'General-purpose autonomous agent for multi-step digital tasks.', link: 'https://manus.im' },
+    { name: 'CrewAI', category: 'Vibe Coding', description: 'Framework for orchestrating collaborative multi-agent systems.', link: 'https://www.crewai.com' },
+    { name: 'OpenHands', category: 'Vibe Coding', description: 'Open-source software agent project for autonomous coding.', link: 'https://github.com/All-Hands-AI/OpenHands' },
+    { name: 'LangGraph', category: 'Vibe Coding', description: 'Stateful orchestration framework for complex AI agents.', link: 'https://www.langchain.com/langgraph' },
+    { name: 'Llama 3.3', category: 'Chatbots', description: 'Meta open-weight model family for assistant and coding tasks.', link: 'https://ai.meta.com/llama/' },
+    { name: 'DeepSeek-R1', category: 'Chatbots', description: 'Reasoning-focused open model with strong coding and math performance.', link: 'https://www.deepseek.com/' },
+    { name: 'Qwen2.5', category: 'Chatbots', description: 'Multilingual open model family with strong coding capabilities.', link: 'https://qwenlm.github.io/' },
+    { name: 'Gemma 2', category: 'Google Tools', description: 'Google open model family for efficient local and cloud inference.', link: 'https://ai.google.dev/gemma' },
+    { name: 'Fireworks AI', category: 'App Build', description: 'High-performance model serving and inference platform.', link: 'https://fireworks.ai' },
+    { name: 'GroqCloud', category: 'App Build', description: 'Low-latency inference platform on Groq hardware.', link: 'https://groq.com' },
+    { name: 'NotebookLM', category: 'Research', description: 'Source-grounded AI assistant for document research workflows.', link: 'https://notebooklm.google' },
+    { name: 'SciSpace', category: 'Research', description: 'AI research companion for paper discovery and understanding.', link: 'https://www.scispace.com' }
+];
+
+function normalizeToolName(name) {
+    return String(name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+function appendLatestPopularTools(toolsDatabase) {
+    const existingNames = new Set();
+
+    Object.values(toolsDatabase).forEach((tools) => {
+        tools.forEach((tool) => {
+            existingNames.add(normalizeToolName(tool.name));
+        });
+    });
+
+    latestPopularTools.forEach((tool) => {
+        const normalizedName = normalizeToolName(tool.name);
+
+        if (!normalizedName || existingNames.has(normalizedName)) {
+            return;
+        }
+
+        if (!toolsDatabase[tool.category]) {
+            toolsDatabase[tool.category] = [];
+        }
+
+        toolsDatabase[tool.category].push({
+            name: tool.name,
+            description: tool.description,
+            link: tool.link
+        });
+        existingNames.add(normalizedName);
+    });
+}
+
 // ========== SAMPLE TOOLS DATA ==========
 function getToolsForCategory(category) {
     const toolsDatabase = {
@@ -316,6 +403,8 @@ function getToolsForCategory(category) {
             { name: 'Google Cloud Document AI', description: 'AI for document processing and data extraction', link: 'https://cloud.google.com/document-ai' }
         ]
     };
+
+    appendLatestPopularTools(toolsDatabase);
     
     return toolsDatabase[category] || [];
 }
@@ -608,6 +697,8 @@ function getAllTools() {
             { name: 'Google Cloud Document AI', description: 'AI for document processing and data extraction', link: 'https://cloud.google.com/document-ai' }
         ]
     };
+
+    appendLatestPopularTools(toolsDatabase);
     
     const allTools = [];
     for (const [category, tools] of Object.entries(toolsDatabase)) {
