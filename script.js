@@ -20,6 +20,8 @@ function initializeApp() {
     setupSearchFunctionality();
     createParticles();
     setupTypingEffect();
+    setupBootSequenceRemoval();
+    setupPremiumMotionSystem();
 }
 
 // ========== NAVIGATION SCROLL EFFECT ==========
@@ -81,16 +83,17 @@ function setupCategoryCards() {
     categoryCards.forEach((card, index) => {
         // Add staggered animation delay
         card.style.animationDelay = `${index * 0.1}s`;
+        card.style.setProperty('--stagger', `${index * 110}ms`);
         
         // Click to expand/collapse
-        card.addEventListener('click', () => {
-            toggleCategoryTools(card);
+        card.addEventListener('click', (event) => {
+            toggleCategoryTools(card, event);
         });
     });
 }
 
 // ========== EXPAND/COLLAPSE CATEGORY TOOLS ==========
-function toggleCategoryTools(card) {
+function toggleCategoryTools(card, event) {
     const toolsContainer = card.querySelector('.tools-container');
     
     if (!toolsContainer) {
@@ -152,8 +155,6 @@ function normalizeCategory(category) {
 function updateCategoryCounts() {
     const categoryCards = document.querySelectorAll('.category-card');
     const tools = getAllTools();
-
-    console.log([...new Set(tools.map(t => t.category))]);
 
     categoryCards.forEach((card) => {
         const selectedCategory = card.querySelector('h3').textContent;
@@ -504,17 +505,27 @@ function createParticles() {
 // ========== SEARCH FUNCTIONALITY ==========
 function setupSearchFunctionality() {
     const searchBtn = document.querySelector('.search-btn');
+    const globalSearch = document.querySelector('.global-search input');
     const searchInput = document.querySelector('.search-input');
     const searchOverlay = document.querySelector('.search-overlay');
     const closeSearchBtn = document.querySelector('.close-search');
     
-    if (!searchBtn) return;
+    if (!searchOverlay || !searchInput) return;
     
     // Open search modal
-    searchBtn.addEventListener('click', () => {
+    const openSearch = () => {
         searchOverlay.classList.add('active');
         searchInput.focus();
-    });
+    };
+
+    if (searchBtn) {
+        searchBtn.addEventListener('click', openSearch);
+    }
+
+    if (globalSearch) {
+        globalSearch.addEventListener('focus', openSearch);
+        globalSearch.addEventListener('click', openSearch);
+    }
     
     // Close search modal
     closeSearchBtn.addEventListener('click', () => {
@@ -747,6 +758,15 @@ function setupTypingEffect() {
     setTimeout(type, 1000);
 }
 
+function setupBootSequenceRemoval() {
+    const boot = document.querySelector('.boot-sequence');
+    if (!boot) return;
+
+    setTimeout(() => {
+        boot.remove();
+    }, 2900);
+}
+
 // ========== SCROLL PROGRESS INDICATOR ==========
 window.addEventListener('scroll', () => {
     const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -777,3 +797,283 @@ console.log('%c🚀 AI Tool Kit', 'color: #00ffff; font-size: 24px; font-weight:
 console.log('%cBuilt with ❤️ and AI', 'color: #ff00ff; font-size: 14px;');
 console.log('%cWant to contribute? Visit github.com/yourrepo', 'color: #ffff00; font-size: 12px;');
 
+// ========== PREMIUM MOTION SYSTEM ==========
+function setupPremiumMotionSystem() {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    setupCosmicCanvas(reducedMotion);
+    setupCursorSystem(reducedMotion);
+    setupSceneParallax(reducedMotion);
+    setupCardLightTracking(reducedMotion);
+    setupMagneticControls(reducedMotion);
+    setupClickSparks(reducedMotion);
+    setupSearchPlaceholder();
+}
+
+function setupCosmicCanvas(reducedMotion) {
+    const canvas = document.getElementById('cosmic-canvas');
+    if (!canvas || reducedMotion) return;
+
+    const ctx = canvas.getContext('2d', { alpha: true });
+    const pointer = { x: window.innerWidth / 2, y: window.innerHeight / 2, active: false };
+    const particles = [];
+    const particleCount = Math.min(1200, Math.max(460, Math.floor(window.innerWidth * window.innerHeight / 1700)));
+    let width = 0;
+    let height = 0;
+    let pixelRatio = 1;
+
+    function resize() {
+        pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = Math.floor(width * pixelRatio);
+        canvas.height = Math.floor(height * pixelRatio);
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+        ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    }
+
+    function makeParticle(index) {
+        const depth = Math.random();
+        return {
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * (0.08 + depth * 0.22),
+            vy: (Math.random() - 0.5) * (0.08 + depth * 0.18),
+            size: 0.45 + Math.random() * (1.9 + depth * 1.8),
+            depth,
+            hue: index % 5 === 0 ? 300 : index % 3 === 0 ? 58 : 184,
+            pulse: Math.random() * Math.PI * 2
+        };
+    }
+
+    resize();
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(makeParticle(i));
+    }
+
+    window.addEventListener('resize', resize, { passive: true });
+    window.addEventListener('pointermove', (event) => {
+        pointer.x = event.clientX;
+        pointer.y = event.clientY;
+        pointer.active = true;
+    }, { passive: true });
+    window.addEventListener('pointerleave', () => {
+        pointer.active = false;
+    }, { passive: true });
+
+    function drawNetwork() {
+        const maxDistance = Math.min(135, width * 0.1);
+
+        for (let i = 0; i < particles.length; i += 5) {
+            const a = particles[i];
+            for (let j = i + 5; j < particles.length; j += 13) {
+                const b = particles[j];
+                const dx = a.x - b.x;
+                const dy = a.y - b.y;
+                const distance = Math.hypot(dx, dy);
+
+                if (distance < maxDistance) {
+                    const alpha = (1 - distance / maxDistance) * 0.13 * Math.min(a.depth + b.depth, 1.4);
+                    ctx.strokeStyle = `hsla(${a.hue}, 100%, 68%, ${alpha})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.beginPath();
+                    ctx.moveTo(a.x, a.y);
+                    ctx.lineTo(b.x, b.y);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function animate(time) {
+        ctx.clearRect(0, 0, width, height);
+        const gradient = ctx.createRadialGradient(width * 0.5, height * 0.35, 0, width * 0.5, height * 0.35, Math.max(width, height) * 0.75);
+        gradient.addColorStop(0, 'rgba(0, 255, 255, 0.045)');
+        gradient.addColorStop(0.38, 'rgba(255, 0, 255, 0.025)');
+        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+
+        for (const particle of particles) {
+            const dx = particle.x - pointer.x;
+            const dy = particle.y - pointer.y;
+            const distance = Math.hypot(dx, dy);
+
+            if (pointer.active && distance < 150) {
+                const force = (1 - distance / 150) * 0.018;
+                particle.vx += dx * force * particle.depth;
+                particle.vy += dy * force * particle.depth;
+            }
+
+            particle.x += particle.vx + Math.sin(time * 0.00018 + particle.pulse) * 0.12 * particle.depth;
+            particle.y += particle.vy + Math.cos(time * 0.00016 + particle.pulse) * 0.08 * particle.depth;
+            particle.vx *= 0.992;
+            particle.vy *= 0.992;
+
+            if (particle.x < -20) particle.x = width + 20;
+            if (particle.x > width + 20) particle.x = -20;
+            if (particle.y < -20) particle.y = height + 20;
+            if (particle.y > height + 20) particle.y = -20;
+
+            const glow = 0.35 + Math.sin(time * 0.001 + particle.pulse) * 0.22;
+            ctx.fillStyle = `hsla(${particle.hue}, 100%, 70%, ${0.18 + glow * 0.35})`;
+            ctx.shadowBlur = 12 + particle.depth * 14;
+            ctx.shadowColor = `hsla(${particle.hue}, 100%, 62%, 0.8)`;
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        ctx.shadowBlur = 0;
+        drawNetwork();
+        requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+}
+
+function setupCursorSystem(reducedMotion) {
+    const core = document.querySelector('.cursor-core');
+    const ring = document.querySelector('.cursor-ring');
+    if (!core || !ring || reducedMotion) return;
+
+    const target = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    const current = { x: target.x, y: target.y };
+
+    window.addEventListener('pointermove', (event) => {
+        target.x = event.clientX;
+        target.y = event.clientY;
+        core.style.transform = `translate3d(${target.x}px, ${target.y}px, 0)`;
+        document.documentElement.style.setProperty('--cursor-x', `${target.x}px`);
+        document.documentElement.style.setProperty('--cursor-y', `${target.y}px`);
+    }, { passive: true });
+
+    document.addEventListener('pointerover', (event) => {
+        if (event.target.closest('a, button, .category-card, .tool-card, input')) {
+            ring.classList.add('is-active');
+        }
+    });
+
+    document.addEventListener('pointerout', (event) => {
+        if (event.target.closest('a, button, .category-card, .tool-card, input')) {
+            ring.classList.remove('is-active');
+        }
+    });
+
+    function animate() {
+        current.x += (target.x - current.x) * 0.18;
+        current.y += (target.y - current.y) * 0.18;
+        ring.style.transform = `translate3d(${current.x}px, ${current.y}px, 0)`;
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+}
+
+function setupSceneParallax(reducedMotion) {
+    if (reducedMotion) return;
+
+    let sceneX = 0;
+    let sceneY = 0;
+    let targetX = 0;
+    let targetY = 0;
+
+    window.addEventListener('pointermove', (event) => {
+        targetX = (event.clientX / window.innerWidth - 0.5) * 2;
+        targetY = (event.clientY / window.innerHeight - 0.5) * 2;
+    }, { passive: true });
+
+    function animate() {
+        sceneX += (targetX - sceneX) * 0.08;
+        sceneY += (targetY - sceneY) * 0.08;
+        document.documentElement.style.setProperty('--scene-x', sceneX.toFixed(4));
+        document.documentElement.style.setProperty('--scene-y', sceneY.toFixed(4));
+        document.documentElement.style.setProperty('--mx', `${sceneX * 22}px`);
+        document.documentElement.style.setProperty('--my', `${sceneY * 22}px`);
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+}
+
+function setupCardLightTracking(reducedMotion) {
+    const cards = document.querySelectorAll('.category-card, .tool-card, .contact-card, .search-modal');
+    if (reducedMotion) return;
+
+    cards.forEach((card) => {
+        card.addEventListener('pointermove', (event) => {
+            const rect = card.getBoundingClientRect();
+            const x = ((event.clientX - rect.left) / rect.width) * 100;
+            const y = ((event.clientY - rect.top) / rect.height) * 100;
+            const tiltX = ((event.clientX - rect.left) / rect.width - 0.5) * 7;
+            const tiltY = ((event.clientY - rect.top) / rect.height - 0.5) * -7;
+
+            card.style.setProperty('--card-x', `${x}%`);
+            card.style.setProperty('--card-y', `${y}%`);
+            card.style.setProperty('--tilt-x', `${tiltX.toFixed(2)}deg`);
+            card.style.setProperty('--tilt-y', `${tiltY.toFixed(2)}deg`);
+        }, { passive: true });
+
+        card.addEventListener('pointerleave', () => {
+            card.style.setProperty('--tilt-x', '0deg');
+            card.style.setProperty('--tilt-y', '0deg');
+        }, { passive: true });
+    });
+}
+
+function setupMagneticControls(reducedMotion) {
+    if (reducedMotion) return;
+
+    document.querySelectorAll('.search-btn, .tool-link, .nav-links a').forEach((control) => {
+        control.addEventListener('pointermove', (event) => {
+            const rect = control.getBoundingClientRect();
+            const x = event.clientX - rect.left - rect.width / 2;
+            const y = event.clientY - rect.top - rect.height / 2;
+            control.style.transform = `translate3d(${x * 0.12}px, ${y * 0.16}px, 0)`;
+        }, { passive: true });
+
+        control.addEventListener('pointerleave', () => {
+            control.style.transform = '';
+        }, { passive: true });
+    });
+}
+
+function setupClickSparks(reducedMotion) {
+    if (reducedMotion) return;
+
+    document.addEventListener('pointerdown', (event) => {
+        if (!event.target.closest('button, a, .category-card, input')) return;
+
+        for (let i = 0; i < 10; i++) {
+            const spark = document.createElement('span');
+            const angle = (Math.PI * 2 * i) / 10;
+            const distance = 22 + Math.random() * 28;
+            spark.className = 'fx-spark';
+            spark.style.left = `${event.clientX}px`;
+            spark.style.top = `${event.clientY}px`;
+            spark.style.setProperty('--tx', `${Math.cos(angle) * distance}px`);
+            spark.style.setProperty('--ty', `${Math.sin(angle) * distance}px`);
+            document.body.appendChild(spark);
+            spark.addEventListener('animationend', () => spark.remove(), { once: true });
+        }
+    });
+}
+
+function setupSearchPlaceholder() {
+    const input = document.querySelector('.search-input');
+    if (!input) return;
+
+    const prompts = [
+        'Search AI tools by name, category, or feature...',
+        'Try "video", "agent", "research", or "music"...',
+        'Find your next AI workflow upgrade...'
+    ];
+    let index = 0;
+
+    setInterval(() => {
+        if (document.activeElement === input || input.value) return;
+        index = (index + 1) % prompts.length;
+        input.setAttribute('placeholder', prompts[index]);
+    }, 3200);
+}

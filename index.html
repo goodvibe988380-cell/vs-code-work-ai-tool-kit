@@ -5,205 +5,235 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Discover the best AI tools organized by category">
     <title>AI Tool Kit - Discover AI Tools for Every Task</title>
-    
-    <!-- Manifest for PWA -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#00ffff">
+    <meta name="theme-color" content="#6d5cff">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="AI Tools">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect fill='%230d0d0d' width='180' height='180'/%3E%3Crect fill='%2300ffff' x='20' y='20' width='140' height='140' rx='20'/%3E%3Ctext x='90' y='105' font-family='Arial, sans-serif' font-size='65' fill='%230d0d0d' text-anchor='middle' font-weight='bold' dominant-baseline='middle'%3EAI%3C/text%3E%3C/svg%3E">
-    
-    <!-- Preload fonts for better performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Your Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <canvas id="cosmic-canvas" aria-hidden="true"></canvas>
+    <div class="bg-animated" aria-hidden="true"></div>
+    <div class="cosmic-depth" aria-hidden="true">
+        <span class="nebula nebula-a"></span>
+        <span class="nebula nebula-b"></span>
+        <span class="aurora"></span>
+        <span class="grid-plane"></span>
+    </div>
+    <div class="cursor-core" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
 
-    <!-- Animated Background -->
-    <div class="bg-animated"></div>
-
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">AI TOOLKIT</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#categories">Categories</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="fade-in">AI Tool Kit</h1>
-            <p>Discover the right AI tools for every task</p>
-            <div class="hero-buttons">
-                <button class="search-btn">
-                    <span>🔍</span>
-                    <span>Search Tools</span>
-                </button>
+    <aside class="sidebar">
+        <a class="brand" href="#home" aria-label="AI Toolkit home">
+            <span>AI</span>
+            <strong>TOOLKIT</strong>
+        </a>
+        <nav class="side-nav" aria-label="Primary navigation">
+            <a class="active" href="#home"><span>⌂</span>Home</a>
+            <a href="#categories"><span>⌘</span>Categories</a>
+            <a href="#top-tools"><span>▦</span>All Tools</a>
+            <a href="#trending"><span>⌁</span>Trending</a>
+            <a href="#latest"><span>◷</span>Latest</a>
+            <a href="#compare"><span>⇄</span>Compare</a>
+            <a href="#prompts"><span>✎</span>Prompt Library</a>
+            <a href="#news"><span>☷</span>AI News</a>
+            <a href="#courses"><span>◇</span>AI Courses</a>
+            <a href="#workflows"><span>⌘</span>Workflows</a>
+            <a href="#contact"><span>↗</span>Submit Tool</a>
+            <a href="#favorites"><span>♡</span>Favorites</a>
+        </nav>
+        <div class="side-actions">
+            <button class="login-btn">Login / Sign Up</button>
+            <div class="pro-mini">
+                <strong>Upgrade to Pro</strong>
+                <span>Unlock premium features</span>
+                <b>⚡</b>
+            </div>
+            <div class="round-actions" aria-label="Settings">
+                <button aria-label="Theme">☾</button>
+                <button aria-label="Preferences">⚙</button>
+                <button aria-label="Settings">✧</button>
             </div>
         </div>
-    </section>
+    </aside>
 
-    <!-- Categories Section -->
-    <section id="categories" class="section">
-        <h2 class="section-title slide-up">AI Categories</h2>
-        
-        <div class="category-grid">
-            
-            <!-- Category 1: Image Generation -->
-            <div class="category-card slide-up">
-                <span class="category-icon">🎨</span>
-                <h3>Image Generation</h3>
-                <p>Create stunning visuals with AI-powered image generators</p>
-                <span class="tool-count">20 Tools</span>
-            </div>
-
-            <!-- Category 2: Video Editing -->
-            <div class="category-card slide-up">
-                <span class="category-icon">🎬</span>
-                <h3>Video Editing</h3>
-                <p>AI-powered video creation and editing tools</p>
-                <span class="tool-count">11 Tools</span>
-            </div>
-
-            <!-- Category 3: Code Assistant -->
-            <div class="category-card slide-up">
-                <span class="category-icon">💻</span>
-                <h3>Code Assistant</h3>
-                <p>AI coding companions for developers</p>
-                <span class="tool-count">12 Tools</span>
-            </div>
-
-            <!-- Category 4: Excel & Data -->
-            <div class="category-card slide-up">
-                <span class="category-icon">📊</span>
-                <h3>Excel & Data</h3>
-                <p>Smart data analysis and automation tools</p>
-                <span class="tool-count">8 Tools</span>
-            </div>
-
-            <!-- Category 5: Chatbots -->
-            <div class="category-card slide-up">
-                <span class="category-icon">💬</span>
-                <h3>Chatbots</h3>
-                <p>Conversational AI assistants and chatbots</p>
-                <span class="tool-count">11 Tools</span>
-            </div>
-
-            <!-- Category 6: Music & Audio -->
-            <div class="category-card slide-up">
-                <span class="category-icon">🎵</span>
-                <h3>Music & Audio</h3>
-                <p>AI music generation and audio processing</p>
-                <span class="tool-count">8 Tools</span>
-            </div>
-
-            <!-- Category 7: Writing -->
-            <div class="category-card slide-up">
-                <span class="category-icon">✍️</span>
-                <h3>Writing</h3>
-                <p>AI writing assistants and content generators</p>
-                <span class="tool-count">11 Tools</span>
-            </div>
-
-            <!-- Category 8: Research -->
-            <div class="category-card slide-up">
-                <span class="category-icon">🔬</span>
-                <h3>Research</h3>
-                <p>AI-powered research and analysis tools</p>
-                <span class="tool-count">8 Tools</span>
-            </div>
-
-            <!-- Category 9: Design -->
-            <div class="category-card slide-up">
-                <span class="category-icon">🎯</span>
-                <h3>Design</h3>
-                <p>AI design tools for graphics and UI/UX</p>
-                <span class="tool-count">9 Tools</span>
-            </div>
-
-            <!-- Category 10: Vibe Coding -->
-            <div class="category-card slide-up">
-                <span class="category-icon">✨</span>
-                <h3>Vibe Coding</h3>
-                <p>AI agents and orchestration for agentic workflows</p>
-                <span class="tool-count">12 Tools</span>
-            </div>
-
-            <!-- Category 11: App Build -->
-            <div class="category-card slide-up">
-                <span class="category-icon">📱</span>
-                <h3>App Build</h3>
-                <p>No-code and low-code app building platforms</p>
-                <span class="tool-count">5 Tools</span>
-            </div>
-
-            <!-- Category 12: Google Tools -->
-            <div class="category-card slide-up">
-                <span class="category-icon">🔍</span>
-                <h3>Google Tools</h3>
-                <p>Google's comprehensive suite of AI-powered tools</p>
-                <span class="tool-count">12 Tools</span>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section">
-        <h2 class="section-title slide-up">About AI Tool Kit</h2>
-        <div style="max-width: 800px; margin: 0 auto; text-align: center; color: rgba(255, 255, 255, 0.7); line-height: 1.8;">
-            <p style="margin-bottom: 1.5rem;">
-                AI Tool Kit is your comprehensive directory of the best AI tools across all categories. 
-                We curate and organize the latest AI-powered applications to help you discover the 
-                perfect tool for your needs.
-            </p>
-            <p>
-                Whether you're a developer, designer, writer, or business professional, 
-                find cutting-edge AI solutions that will transform your workflow.
-            </p>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <h2 class="section-title slide-up">Get in Touch</h2>
-        <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-            <div class="contact-card slide-up">
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #00ffff;">Email</h3>
-                    <a href="mailto:goodvibe988380@gmail.com" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; font-size: 1.1rem; transition: color 0.3s ease;">
-                        goodvibe988380@gmail.com
-                    </a>
-                </div>
-                <div style="border-top: 1px solid rgba(0, 255, 255, 0.2); padding-top: 2rem;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #00ffff;">Phone</h3>
-                    <a href="tel:+918123646126" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; font-size: 1.1rem; transition: color 0.3s ease;">
-                        +91 8123646126
-                    </a>
+    <main class="app-shell">
+        <header class="topbar">
+            <label class="global-search">
+                <span>⌕</span>
+                <input type="search" placeholder="Search AI tools, categories, or anything...">
+                <kbd>⌘ K</kbd>
+            </label>
+            <div class="top-actions">
+                <button class="orb-toggle" aria-label="AI mode">✣</button>
+                <button aria-label="Theme">☀</button>
+                <div class="avatar" aria-label="Profile">
+                    <span>AI</span>
+                    <i></i>
                 </div>
             </div>
-            <p style="margin-top: 2rem; color: rgba(255, 255, 255, 0.5); font-size: 0.95rem;">
-                We'd love to hear from you. Feel free to reach out with any questions or feedback!
-            </p>
-        </div>
-    </section>
+        </header>
 
-    <!-- Search Modal -->
+        <section id="home" class="hero dashboard-hero">
+            <div class="hero-content">
+                <h1 class="fade-in">Discover The Best<br><span>AI Tools</span> In One Place</h1>
+                <p>3,500+ AI tools across 150+ categories.<br>Find the perfect AI tool for your needs.</p>
+                <div class="hero-search-panel">
+                    <input type="text" placeholder="I need an AI tool for...">
+                    <button class="search-btn">Search</button>
+                </div>
+                <div class="trend-chips">
+                    <strong>Trending:</strong>
+                    <button>Image Generator</button>
+                    <button>Video Editor</button>
+                    <button>Code Assistant</button>
+                    <button>Chatbot</button>
+                </div>
+                <div class="stat-grid">
+                    <article><span>✣</span><strong>3,500+</strong><small>AI Tools</small></article>
+                    <article><span>▣</span><strong>150+</strong><small>Categories</small></article>
+                    <article><span>♟</span><strong>50K+</strong><small>Users</small></article>
+                    <article><span>⬡</span><strong>Daily</strong><small>Updates</small></article>
+                </div>
+            </div>
+            <div class="hero-orbit" aria-hidden="true">
+                <div class="earth-system">
+                    <div class="earth">
+                        <span class="earth-clouds"></span>
+                        <span class="earth-lights"></span>
+                        <span class="earth-atmosphere"></span>
+                    </div>
+                    <span class="orbit orbit-a"></span>
+                    <span class="orbit orbit-b"></span>
+                    <span class="satellite satellite-a"></span>
+                    <span class="satellite satellite-b"></span>
+                </div>
+                <div class="logo-cloud">
+                    <span style="--i:0">GPT</span>
+                    <span style="--i:1">Gemini</span>
+                    <span style="--i:2">Claude</span>
+                    <span style="--i:3">Runway</span>
+                    <span style="--i:4">Google</span>
+                    <span style="--i:5">Cursor</span>
+                    <span style="--i:6">Figma</span>
+                    <span style="--i:7">Sora</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="content-grid">
+            <div class="main-feed">
+                <section id="latest" class="panel-section">
+                    <div class="section-heading">
+                        <h2>🚀 Latest AI Releases</h2>
+                        <a href="#top-tools">View All →</a>
+                    </div>
+                    <div class="release-row">
+                        <article class="release-card"><span class="badge">NEW</span><b>◎</b><h3>GPT-5.5</h3><p>OpenAI</p><small>May 15, 2025</small></article>
+                        <article class="release-card"><span class="badge">NEW</span><b>✦</b><h3>Gemini 3</h3><p>Google</p><small>May 14, 2025</small></article>
+                        <article class="release-card"><span class="badge">NEW</span><b>AI</b><h3>Claude 5</h3><p>Anthropic</p><small>May 13, 2025</small></article>
+                        <article class="release-card"><span class="badge">NEW</span><b>◉</b><h3>Veo 3.1</h3><p>Google DeepMind</p><small>May 12, 2025</small></article>
+                        <article class="release-card"><span class="badge">NEW</span><b>◿</b><h3>Midjourney V8</h3><p>Midjourney</p><small>May 10, 2025</small></article>
+                        <article class="release-card"><span class="badge">NEW</span><b>𝕏</b><h3>Grok 5</h3><p>xAI</p><small>May 9, 2025</small></article>
+                    </div>
+                </section>
+
+                <section id="categories" class="panel-section">
+                    <div class="section-heading">
+                        <h2>🏆 Top Categories</h2>
+                        <a href="#categories">View All →</a>
+                    </div>
+                    <div class="category-grid compact">
+                        <div class="category-card slide-up"><span class="category-icon">🎨</span><h3>Image Generation</h3><p>Create stunning visuals with AI-powered image generators</p><span class="tool-count">20 Tools</span></div>
+                        <div class="category-card slide-up"><span class="category-icon">🎬</span><h3>Video Editing</h3><p>AI-powered video creation and editing tools</p><span class="tool-count">11 Tools</span></div>
+                        <div class="category-card slide-up"><span class="category-icon">💻</span><h3>Code Assistant</h3><p>AI coding companions for developers</p><span class="tool-count">12 Tools</span></div>
+                        <div class="category-card slide-up"><span class="category-icon">💬</span><h3>Chatbots</h3><p>Conversational AI assistants and chatbots</p><span class="tool-count">11 Tools</span></div>
+                        <div class="category-card slide-up"><span class="category-icon">🎵</span><h3>Music & Audio</h3><p>AI music generation and audio processing</p><span class="tool-count">8 Tools</span></div>
+                        <div class="category-card slide-up"><span class="category-icon">🔬</span><h3>Research</h3><p>AI-powered research and analysis tools</p><span class="tool-count">8 Tools</span></div>
+                    </div>
+                </section>
+
+                <section id="top-tools" class="panel-section">
+                    <div class="section-heading">
+                        <h2>⭐ Top 100 AI Tools</h2>
+                        <div class="filter-tabs">
+                            <button class="active">All</button>
+                            <button>Free</button>
+                            <button>Paid</button>
+                            <button>Open Source</button>
+                            <button>New</button>
+                        </div>
+                    </div>
+                    <div class="tool-list">
+                        <article><b>ChatGPT</b><span>AI Chatbot</span><em>98</em></article>
+                        <article><b>Midjourney</b><span>Image Generator</span><em>96</em></article>
+                        <article><b>Cursor</b><span>Code Editor</span><em>94</em></article>
+                        <article><b>Runway</b><span>Video Editor</span><em>92</em></article>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="right-rail">
+                <section id="trending" class="rail-card">
+                    <h2>🔥 Trending Tools</h2>
+                    <ol class="trending-list">
+                        <li><span>◎</span><b>ChatGPT<small>AI Chatbot</small></b><em>↑ 2</em></li>
+                        <li><span>AI</span><b>Claude<small>AI Assistant</small></b><em>↑ 3</em></li>
+                        <li><span>✦</span><b>Gemini<small>AI Chatbot</small></b><em>↑ 1</em></li>
+                        <li><span>◿</span><b>Midjourney<small>Image Generator</small></b><em>↑ 5</em></li>
+                        <li><span>⌬</span><b>Perplexity<small>AI Search Engine</small></b><em>↑ 2</em></li>
+                        <li><span>◆</span><b>Cursor<small>Code Editor</small></b><em>↑ 4</em></li>
+                        <li><span>R</span><b>Runway<small>Video Editor</small></b><em>↑ 6</em></li>
+                        <li><span>♥</span><b>Lovable<small>AI App Builder</small></b><em>New</em></li>
+                    </ol>
+                    <button class="wide-btn">View All Trending →</button>
+                </section>
+
+                <section id="news" class="rail-card news-card">
+                    <div class="section-heading">
+                        <h2>📰 AI News</h2>
+                        <a href="#news">View All →</a>
+                    </div>
+                    <article><span>◎</span><p>OpenAI releases GPT-5.5 with enhanced reasoning<small>2 hours ago</small></p></article>
+                    <article><span>✦</span><p>Google unveils Gemini 3 with multimodal capabilities<small>5 hours ago</small></p></article>
+                    <article><span>AI</span><p>Anthropic launches Claude 5 with 1M context window<small>1 day ago</small></p></article>
+                </section>
+
+                <section class="premium-card">
+                    <div>
+                        <h2>🚀 Unlock Premium Features</h2>
+                        <ul>
+                            <li>Advanced AI comparisons</li>
+                            <li>Premium tools list</li>
+                            <li>Early access to new tools</li>
+                            <li>No ads, unlimited access</li>
+                        </ul>
+                        <button>Upgrade to Pro</button>
+                    </div>
+                    <div class="crown" aria-hidden="true">♛</div>
+                </section>
+            </aside>
+        </div>
+
+        <section id="about" class="about-band">
+            <h2>About AI Tool Kit</h2>
+            <p>AI Tool Kit is your curated command center for finding, comparing, and launching the right AI apps for creative, coding, research, and business workflows.</p>
+        </section>
+
+        <section id="contact" class="about-band contact-band">
+            <h2>Get in Touch</h2>
+            <p><a href="mailto:goodvibe988380@gmail.com">goodvibe988380@gmail.com</a> · <a href="tel:+918123646126">+91 8123646126</a></p>
+        </section>
+    </main>
+
     <div class="search-overlay">
         <div class="search-modal">
-            <button class="close-search">&times;</button>
+            <button class="close-search" aria-label="Close search">&times;</button>
             <div class="search-modal-header">
                 <input type="text" class="search-input" placeholder="Search AI tools by name, category, or feature...">
             </div>
@@ -211,17 +241,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>Built with ❤️ and AI • 2026 • AI Tool Kit</p>
-        <p style="margin-top: 0.5rem; font-size: 0.85rem;">
-            <a href="#" style="color: #00ffff; text-decoration: none; margin: 0 1rem;">Privacy</a>
-            <a href="#" style="color: #00ffff; text-decoration: none; margin: 0 1rem;">Terms</a>
-            <a href="#" style="color: #00ffff; text-decoration: none; margin: 0 1rem;">Contact</a>
-        </p>
-    </footer>
-
-    <!-- Your Custom JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
